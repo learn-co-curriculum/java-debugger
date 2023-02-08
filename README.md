@@ -23,7 +23,7 @@ public class BuggyProgram {
     int people;
 
     // How many slices of pizza should each person get?
-    int slices = pizzaSlices / people;
+    int slicesPerPerson = pizzaSlices / people;
     System.out.println("Each person should have " + slices + " slices of pizza.");
 
     // Are there more slices of pizza than people?
@@ -60,7 +60,7 @@ Let's refresh our memory with some terminology review!
 Since we are already familiar with running in debug mode, set a breakpoint on
 line 8:
 
-![set-breakpoint-line-8](https://curriculum-content.s3.amazonaws.com/java-mod-1/debugger/intellij-debugger-set-breakpoint.PNG)
+![set-breakpoint-line-8](https://curriculum-content.s3.amazonaws.com/java-mod-1/debugger/set-breakpoint.png)
 
 Now let's run the debugger! But uh-oh! It looks like we hit a compile-time
 error. Remember, a compile-time error is an error that occurs when we attempt
@@ -78,7 +78,7 @@ to `0` on line 5:
 
 Let's run the debugger again and watch it hit the breakpoint on line 8:
 
-![hit-breakpoint](https://curriculum-content.s3.amazonaws.com/java-mod-1/debugger/intellij-debugger-hit-breakpoint.PNG)
+![hit-breakpoint](https://curriculum-content.s3.amazonaws.com/java-mod-1/debugger/intellij-debugger-hit-breakpoint.png)
 
 Notice the buttons to the right of the Java Visualizer tab that we highlighted
 in the screenshot above. These buttons show how to proceed with the execution of
@@ -106,12 +106,12 @@ For our purposes when debugging, we will mostly be using the first two actions:
 
 Now notice the values the variables are holding within the debug console.
 `pizzaSlices` is holding the value of 10 and `people` is holding the value of 0.
-We declare the variable `slices` on line 8 and initialize it to
+We declare the variable `slicesPerPerson` on line 8 and initialize it to
 `pizzaSlices / people`. This expression is the same as `10 / 0`, which, as we
 know, is not a number since we can't divide anything by 0. Let's see what
 happens when we click the step-over button:
 
-![arithmeticexception](https://curriculum-content.s3.amazonaws.com/java-mod-1/debugger/arithmeticexception.PNG)
+![arithmeticexception](https://curriculum-content.s3.amazonaws.com/java-mod-1/debugger/arithmeticexception.png)
 
 Here we have run into a runtime error. Recall that a runtime error is an error
 that occurs at runtime, when the program is executing. This is different from
@@ -128,13 +128,13 @@ there are 5 people at this pizza party:
 When we run the debugger again, notice when we hit the breakpoint that the
 values the variables are holding have updated!
 
-![hit-breakpoint-again](https://curriculum-content.s3.amazonaws.com/java-mod-1/debugger/intellij-debugger-hit-breakpoint-2.PNG)
+![hit-breakpoint-again](https://curriculum-content.s3.amazonaws.com/java-mod-1/debugger/intellij-debugger-hit-breakpoint-2.png)
 
 Now instead of the expression `pizzaSlices / people` equating to `10 / 0`, it
 will evaluate to `10 / 5`. If we step-over the breakpoint, we'll see that the
-`slices` variable has now been declared and initialized to 2.
+`slicesPerPerson` variable has now been declared and initialized to 2.
 
-![fixed-division-by-zero](https://curriculum-content.s3.amazonaws.com/java-mod-1/debugger/intellij-debugger-initialized-slices.PNG)
+![fixed-division-by-zero](https://curriculum-content.s3.amazonaws.com/java-mod-1/debugger/intellij-debugger-initialized-slices.png)
 
 As we can see, the debugger can help us identify some obvious errors. Like a
 variable not being initialized or a division by zero. But it can also help
@@ -144,7 +144,7 @@ error or exception!
 Remove the breakpoint on line 8 by clicking the red dot next to the line number.
 Place another breakpoint on line 12:
 
-![reset-breakpoint](https://curriculum-content.s3.amazonaws.com/java-mod-1/debugger/intellij-debugger-reset-breakpoint.PNG)
+![reset-breakpoint](https://curriculum-content.s3.amazonaws.com/java-mod-1/debugger/intellij-debugger-reset-breakpoint.png)
 
 We can continue to resume the execution of the program until it sees another
 breakpoint or until the program has fully executed by clicking the
@@ -157,7 +157,7 @@ button:
 
 Let's click "resume program" and watch it hit the breakpoint on line 12:
 
-![hit-breakpoint-line-12](https://curriculum-content.s3.amazonaws.com/java-mod-1/debugger/intellij-debugger-hit-breakpoint-3.PNG)
+![hit-breakpoint-line-12](https://curriculum-content.s3.amazonaws.com/java-mod-1/debugger/intellij-debugger-hit-breakpoint-3.png)
 
 Before we step-over this statement, let's look at the boolean expression
 `pizzaSlices < people`. In words, this would read as "pizza slices is less than
@@ -175,7 +175,7 @@ to 10 and `people` is set to 5.
 
 Now let's click the step-over button:
 
-![step-over-to-line-13](https://curriculum-content.s3.amazonaws.com/java-mod-1/debugger/intellij-debugger-step-over.PNG)
+![step-over-to-line-13](https://curriculum-content.s3.amazonaws.com/java-mod-1/debugger/intellij-debugger-step-over-line-13.png)
 
 Notice the `morePizza` variable has now been declared and initialized to the
 boolean expression.
@@ -250,12 +250,12 @@ What happens if we change line 5 to:
 
 Set a breakpoint at line 9 and run the `BuggyProgram` in debug mode again:
 
-![integer-division](https://curriculum-content.s3.amazonaws.com/java-mod-1/debugger/intellij-debugger-hit-breakpoint-4.PNG)
+![integer-division](https://curriculum-content.s3.amazonaws.com/java-mod-1/debugger/intellij-debugger-hit-breakpoint-4.png)
 
 As we can see, on line 8:
 
 ```java
-int slices = pizzaSlices / people;
+int slicesPerPerson = pizzaSlices / people;
 ```
 
 We performed integer division. As a reminder, with integer division, the decimal
@@ -266,7 +266,7 @@ So `pizzaSlices / people` is the same as saying `10 / 3`, which evaluates to 3
 when using integer division. If we were to perform real division, `10 / 3` would
 be approximately 3.33.
 
-Let's say we had a pizza cutter where we could cut slice of pizza into thirds.
+Let's say we had a pizza cutter where we could cut a slice of pizza into thirds.
 With that assumption, maybe we were expecting real division rather than integer
 division.
 
@@ -287,8 +287,8 @@ public class BuggyProgram {
 
         // How many slices of pizza should each person get?
         // Change the data type from int to double
-        double slices = pizzaSlices / people;
-        System.out.println("Each person should have " + slices + " slices of pizza.");
+        double slicesPerPerson = pizzaSlices / people;
+        System.out.println("Each person should have " + slicesPerPerson + " slices of pizza.");
 
         // Are there more slices of pizza than people?
         // Modify the boolean expression if you haven't already to use a > rather than a <
@@ -302,7 +302,7 @@ public class BuggyProgram {
 If we run the program again and hit the breakpoint, notice what the variables
 now store:
 
-![real-division](https://curriculum-content.s3.amazonaws.com/java-mod-1/debugger/intellij-debugger-real-division.PNG)
+![real-division](https://curriculum-content.s3.amazonaws.com/java-mod-1/debugger/intellij-debugger-real-division.png)
 
 If we step over this line, notice the console now has printed:
 
