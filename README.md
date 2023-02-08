@@ -24,7 +24,7 @@ public class BuggyProgram {
 
     // How many slices of pizza should each person get?
     int slicesPerPerson = pizzaSlices / people;
-    System.out.println("Each person should have " + slices + " slices of pizza.");
+    System.out.println("Each person should have " + slicesPerPerson + " slices of pizza.");
 
     // Are there more slices of pizza than people?
     boolean morePizza = pizzaSlices < people;
